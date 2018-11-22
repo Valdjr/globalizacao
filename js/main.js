@@ -110,15 +110,19 @@ function showModal(id, nome, comentario, votos, acao) {
 function enviarCaptcha() {
 	$.ajax({
 		url: 'validar.php',
-		method: 'GET',
+		method: 'post',
 		data: {palavra: $('#palavra').val()}
 	}).done(function (result){
 		result = JSON.parse(result);
 		if(result) {
+			$('#erroCaptcha').hide();
 			$('#myModal').modal('hide');
 			window.location.href = 'index.php';
+			atualizarCaptcha();
+			var comente = $('a[href="#comente"]');
+			comente.trigger('click');
 		} else {
-			alert('UE');
+			$('#erroCaptcha').show();
 		}
 	});
 }

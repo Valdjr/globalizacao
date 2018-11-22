@@ -581,6 +581,9 @@
 							<img src="captcha.php?l=150&a=50&tf=20&ql=5" id="captcha">
 							<button type="submit" class="outline-btn" onclick="atualizarCaptcha()">Atualizar Captcha</button>
 						</div>
+						<div class="alert alert-danger" id="erroCaptcha" style="display: none;">
+							Captcha inválido!
+						</div>
 						<input type="text" name="palavra" class="input" id="palavra" placeholder="Insira as letras da imagem" />
 						<div class="modal-footer">
 							<button type="button" class="outline-btn" data-dismiss="modal">Fechar</button>

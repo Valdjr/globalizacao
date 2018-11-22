@@ -1,6 +1,6 @@
 <?php
-   session_start();
-   $resultado = false;
+    session_start();
+    $resultado = false;
     if ($_POST["palavra"] == $_SESSION["palavra"]){
         $resultado = true;
     }
