@@ -106,3 +106,23 @@ function showModal(id, nome, comentario, votos, acao) {
 	$('#modalacao').val(acao);
 	$('#myModal').modal();
 }
+
+function enviarCaptcha() {
+	$.ajax({
+		url: 'validar.php',
+		method: 'GET',
+		data: {palavra: $('#palavra').val()}
+	}).done(function (result){
+		result = JSON.parse(result);
+		if(result) {
+			$('#myModal').modal('hide');
+			window.location.href = 'index.php';
+		} else {
+			alert('UE');
+		}
+	});
+}
+
+function atualizarCaptcha() {
+	$('#captcha').attr('src','captcha.php?l=150&a=50&tf=20&ql=5');
+}

@@ -562,40 +562,42 @@
 	</div>
 	<!-- /Preloader -->
 
-	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<form onsubmit="return false;" name="form">
+			<input type="hidden" id="modalid">
+			<input type="hidden" id="modalnome">
+			<input type="hidden" id="modalcomentario">
+			<input type="hidden" id="modalvotos">
+			<input type="hidden" id="modalacao">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Captcha</h4>
+					</div>
+					<div class="modal-body">
+						<div class="about">
+							<img src="captcha.php?l=150&a=50&tf=20&ql=5" id="captcha">
+							<button type="submit" class="outline-btn" onclick="atualizarCaptcha()">Atualizar Captcha</button>
+						</div>
+						<input type="text" name="palavra" class="input" id="palavra" placeholder="Insira as letras da imagem" />
+						<div class="modal-footer">
+							<button type="button" class="outline-btn" data-dismiss="modal">Fechar</button>
+							<button type="submit" class="main-btn" onclick="enviarCaptcha()">Enviar</button>
+						</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<!-- jQuery Plugins -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 
 </html>
-
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<form action="validar.php" name="form" method="post">
-		<input type="hidden" id="modalid">
-		<input type="hidden" id="modalnome">
-		<input type="hidden" id="modalcomentario">
-		<input type="hidden" id="modalvotos">
-		<input type="hidden" id="modalacao">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Captcha</h4>
-				</div>
-				<div class="modal-body">
-					<img src="captcha.php?l=150&a=50&tf=20&ql=5">
-					<input type="text" name="palavra"  />
-					<div class="modal-footer">
-						<button type="button" class="outline-btn" data-dismiss="modal">Fechar</button>
-						<button type="submit" class="main-btn">Enviar</button>
-					</div>
-			</div>
-		</div>
-	</form>
-</div>
