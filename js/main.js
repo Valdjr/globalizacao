@@ -98,11 +98,10 @@
 
 })(jQuery);
 
-function showModal(id, nome, comentario, votos, acao) {
+function showModal(id, nome, comentario, acao) {
 	$('#modalid').val(id);
 	$('#modalnome').val(nome);
 	$('#modalcomentario').val(comentario);
-	$('#modalvotos').val(votos);
 	$('#modalacao').val(acao);
 	$('#myModal').modal();
 }
@@ -111,20 +110,25 @@ function enviarCaptcha() {
 	$.ajax({
 		url: 'validar.php',
 		method: 'post',
-		data: {palavra: $('#palavra').val()}
+		data: {palavra: $('#palavra').val(), id: $('#modalid').val(), nome: $('#modalnome').val(), comentario: $('#modalcomentario').val(), acao: $('#modalacao').val()}
 	}).done(function (result){
+		console.log(result);
 		result = JSON.parse(result);
 		if(result) {
 			$('#erroCaptcha').hide();
 			$('#myModal').modal('hide');
-			window.location.href = 'index.php';
+			window.location.href = 'index.php?href=forum';
 			atualizarCaptcha();
-			var comente = $('a[href="#comente"]');
-			comente.trigger('click');
+			goToForum();
 		} else {
 			$('#erroCaptcha').show();
 		}
 	});
+}
+
+function goToForum() {
+	var comente = $('a[href="#comente"]');
+	comente.trigger('click');
 }
 
 function atualizarCaptcha() {

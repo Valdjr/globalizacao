@@ -418,6 +418,16 @@
 						<h2 class="title">Comente</h2>
 					</div>
 
+					<div class="col">
+						<form onsubmit="showModal(0, $('#nomeComentario').val(), $('#comentarioComentario').val(), 'incluir'); return false;">
+							<label for="">Nome:</label>
+							<input type="text" class="input" id="nomeComentario">
+							<label for="">Comentário (obrigatório):</label>
+							<input class="input" type="text"  id="comentarioComentario" required minlength="10" maxlength="300">
+							<button class="main-btn" style="margin-bottom: 50px;">Enviar</button>
+						</form>
+					</div>
+
 					<div class="col-md-6">
 						<div class="section-header text-center">
 							<h3 class="title"><i class="fa fa-thumbs-o-up" style="text-align: center;font-size: 32px;color: #6195FF;border-radius: 50%;"></i></h3>
@@ -426,7 +436,7 @@
 							<div class="service">
 								<span>dawhudhwauwda</span>
 								<div class="team-content" style="float: right;">
-									<button class="btn" data-toggle="modal" onclick="showModal(1,'valdir','teste',15, 'up')"><i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
+									<button class="btn" data-toggle="modal" onclick="showModal(1,'valdir','teste', 'up')"><i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
 									<span>+15</span>
 									<button class="btn" data-toggle="modal" onclick="showModal()"><i class="fa fa-chevron-down" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
 								</div>

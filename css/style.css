@@ -207,13 +207,14 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
     height: 40px;
     width: 100%;
     border: none;
-	  background: #F4F4F4;
+	  background: rgba(228, 228, 228, 0.726);
     border-bottom: 2px solid #EEE;
     color: #354052;
     padding: 0px 10px;
     opacity: 0.5;
     -webkit-transition: 0.2s border-color, 0.2s opacity;
     transition: 0.2s border-color, 0.2s opacity;
+    margin-bottom: 15px;
 }
 
 textarea {
