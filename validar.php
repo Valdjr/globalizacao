@@ -18,7 +18,7 @@
         $comentario = $_POST['comentario'];
         $acao = $_POST['acao'];
 
-        if($acao == 'votarUp') {
+        if($acao == 1) {
 
             $retorno = $con->query("SELECT votos FROM comentario WHERE id = {$id}");
             while($obj = $retorno->fetch_assoc()){
@@ -29,7 +29,7 @@
 
             $con->query("UPDATE comentario SET votos = '{$votos}' WHERE id = {$id}");
 
-        } else if($acao == 'votarDown') {
+        } else if($acao == 2) {
 
             $retorno = $con->query("SELECT votos FROM comentario WHERE id = {$id}");
             while($obj = $retorno->fetch_assoc()){

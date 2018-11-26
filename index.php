@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+	<link rel="icon" href="img/logo-alt.png" type="image/x-icon"/>
+	<link rel="shortcut icon" href="img/logo-alt.png" type="image/x-icon"/>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,7 +74,7 @@
 					<li><a href="#globalizacao">Globalização</a></li>
 					<li><a href="#positivos">Pontos Positivos</a></li>
 					<li><a href="#negativos">Pontos Negativos</a></li>
-					<li><a href="#estatisticas">Global vs Nacional</a></li>
+					<li><a href="#estatisticas">Estatísticas</a></li>
 					<li><a href="#comente">Comente</a></li>
 					<li><a href="#autor">Autor</a></li>
 					<li><a href="https://github.com/Valdjr/globalizacao" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></li>
@@ -200,7 +202,7 @@
 
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">Pontos Positivos</h2>
+					<h2 class="title">Alguns Pontos Positivos</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -243,7 +245,7 @@
 
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">Pontos negativos</h2>
+					<h2 class="title">Alguns Pontos negativos</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -288,7 +290,7 @@
 				<!-- why choose us content -->
 				<div class="col-md-6">
 					<div class="section-header">
-						<h2 class="title">Global vs Nacional</h2>
+						<h2 class="title">Estatísticas</h2>
 					</div>
 					<p>Não está preocupado se uma marca é global ou local, compra a opção com melhor preço.</p>
 					<div class="feature">
@@ -411,15 +413,13 @@
 	<div id="comente" class="section md-padding bg-grey">
 
 			<div class="container">
-
 				<div class="row">
-
 					<div class="section-header text-center">
 						<h2 class="title">Comente</h2>
 					</div>
 
 					<div class="col">
-						<form onsubmit="showModal(0, $('#nomeComentario').val(), $('#comentarioComentario').val(), 'incluir'); return false;">
+						<form onsubmit="showModal(0, 0, $('#nomeComentario').val(), $('#comentarioComentario').val()); return false;">
 							<label for="">Nome:</label>
 							<input type="text" class="input" id="nomeComentario">
 							<label for="">Comentário (obrigatório):</label>
@@ -427,36 +427,43 @@
 							<button class="main-btn" style="margin-bottom: 50px;">Enviar</button>
 						</form>
 					</div>
+				</div>
 
-					<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-4">
 						<div class="section-header text-center">
 							<h3 class="title"><i class="fa fa-thumbs-o-up" style="text-align: center;font-size: 32px;color: #6195FF;border-radius: 50%;"></i></h3>
 						</div>
-						<div class="" id="conteudoPositivo">
-							<div class="service">
-								<span>dawhudhwauwda</span>
-								<div class="team-content" style="float: right;">
-									<button class="btn" data-toggle="modal" onclick="showModal(1,'valdir','teste', 'up')"><i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
-									<span>+15</span>
-									<button class="btn" data-toggle="modal" onclick="showModal()"><i class="fa fa-chevron-down" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
+					</div>
+					<div class="col-md-4">
+						<form onsubmit="return false;">
+							<label for="">Pesquisa:</label>
+							<div class="row">
+								<div class="col-md-10">
+									<input type="text" id="pesquisaForum">
+								</div>
+								<div class="col-md-2">
+									<button class="btn" onclick="listarForum()"><i class="fa fa-search"></i></button>
 								</div>
 							</div>
+						</form>
+					</div>
+					<div class="col-md-4">
+						<div class="section-header text-center">
+							<h3 class="title"><i class="fa fa-thumbs-o-down" style="text-align: center;font-size: 32px;color: #6195FF;border-radius: 50%;"></i></h3>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-6">
+						<div class="" id="conteudoPositivo">
 						</div>
 					</div>
 
 					<div class="col-md-6">
-						<div class="section-header text-center">
-								<h3 class="title"><i class="fa fa-thumbs-o-down" style="text-align: center;font-size: 32px;color: #6195FF;border-radius: 50%;"></i></h3>
-						</div>
 						<div class="" id="conteudoNegativo">
-							<div class="service">
-								<span>klaklakalaklk</span>
-								<div class="team-content" style="float: right;">
-									<button class="btn"><i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
-									<span>-3</span>
-									<button class="btn"><i class="fa fa-chevron-down" style="font-size: 15px;position: inherit; color: #6195FF;"></i></button>
-								</div>
-							</div>
 						</div>
 					</div>
 

@@ -14,7 +14,7 @@ class Conexao {
     }
 
     private function __construct() {
-        self::$con = new mysqli('127.0.0.1','root','asdf000','creative');
+        self::$con = new mysqli('127.0.0.1','root','','creative');
     }
 
 }
