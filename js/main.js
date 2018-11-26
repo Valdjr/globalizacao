@@ -5,6 +5,7 @@
 	// Preloader
 	$(window).on('load', function() {
 		$("#preloader").delay(600).fadeOut();
+		listarForum();
 	});
 
 	///////////////////////////
@@ -98,11 +99,11 @@
 
 })(jQuery);
 
-function showModal(id, nome, comentario, acao) {
+function showModal(id, acao, nome, comentario) {
 	$('#modalid').val(id);
+	$('#modalacao').val(acao);
 	$('#modalnome').val(nome);
 	$('#modalcomentario').val(comentario);
-	$('#modalacao').val(acao);
 	$('#myModal').modal();
 }
 
@@ -117,20 +118,69 @@ function enviarCaptcha() {
 		if(result) {
 			$('#erroCaptcha').hide();
 			$('#myModal').modal('hide');
-			window.location.href = 'index.php?href=forum';
 			atualizarCaptcha();
-			goToForum();
+			listarForum();
 		} else {
 			$('#erroCaptcha').show();
 		}
 	});
 }
 
-function goToForum() {
-	var comente = $('a[href="#comente"]');
-	comente.trigger('click');
-}
-
 function atualizarCaptcha() {
 	$('#captcha').attr('src','captcha.php?l=150&a=50&tf=20&ql=5');
+}
+
+function listarForum() {
+	$.ajax({
+		url: 'listarforum.php',
+		method: 'post',
+		data: {pesquisa: $('#pesquisaForum').val()}
+	}).done(function (data){
+		data = JSON.parse(data);
+
+		positivos = data.positivos;
+		negativos = data.negativos;
+
+		$('#conteudoPositivo').html("");
+		$('#conteudoNegativo').html("");
+
+		positivos.forEach(function (elem, ind) {
+			var up = $('<i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i>');
+			var down = $('<i class="fa fa-chevron-down" style="font-size: 15px;position: inherit; color: #6195FF;"></i>');
+			var button1 = $('<button  data-toggle="modal" onclick="showModal('+ elem.id +',1)">').addClass('btn').append(up);
+			var sinal = elem.votos > 0 ? '+' : '';
+			var span1 = $('<span>').html(" " + sinal + elem.votos + " ");
+			var button2 = $('<button data-toggle="modal" onclick="showModal('+ elem.id +',2)">').addClass('btn').append(down);
+			var div1 = $('<div>').addClass('team-content').css('float','right').append(button1).append(span1).append(button2);
+			var nome = $('<span>').append($('<strong>').html(elem.nome == "" ? 'Anônimo' : elem.nome));
+			nome.append($('<small>').html(" "+dataAtualFormatada(elem.data_comentario)));
+			var divNomeBotoes = $('<div>').append(nome).append(div1);
+			var span2 = $('<span>').html(elem.comentario);
+			var div2 = $('<div>').addClass('service').append(divNomeBotoes).append($('<br>')).append(span2);
+			$('#conteudoPositivo').append(div2);
+		});
+
+		negativos.forEach(function (elem, ind) {
+			var up = $('<i class="fa fa-chevron-up" style="font-size: 15px;position: inherit; color: #6195FF;"></i>');
+			var down = $('<i class="fa fa-chevron-down" style="font-size: 15px;position: inherit; color: #6195FF;"></i>');
+			var button1 = $('<button data-toggle="modal" onclick="showModal('+ elem.id +',1)">').addClass('btn').append(up);
+			var span1 = $('<span>').html(" " + elem.votos + " ");
+			var button2 = $('<button  data-toggle="modal" onclick="showModal('+ elem.id +',2)">').addClass('btn').append(down);
+			var div1 = $('<div>').addClass('team-content').css('float','right').append(button1).append(span1).append(button2);
+			var nome = $('<span>').append($('<strong>').html(elem.nome == "" ? 'Anônimo' : elem.nome));
+			nome.append($('<small>').html(" "+dataAtualFormatada(elem.data_comentario)));
+			var divNomeBotoes = $('<div>').append(nome).append(div1);
+			var span2 = $('<span>').html(elem.comentario);
+			var div2 = $('<div>').addClass('service').append(divNomeBotoes).append($('<br>')).append(span2);
+			$('#conteudoNegativo').append(div2);
+		});
+	});
+}
+
+function dataAtualFormatada(a){
+    var data = new Date(a),
+        dia  = data.getDate().toString().padStart(2, '0'),
+        mes  = (data.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+        ano  = data.getFullYear();
+    return dia+"/"+mes+"/"+ano;
 }
