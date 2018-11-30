@@ -4,7 +4,7 @@
     require_once 'conexao.php';
 
     $resultado = false;
-    // if ($_POST["palavra"] == $_SESSION["palavra"]){
+    if ($_POST["palavra"] == $_SESSION["palavra"]){
 
         $con = Conexao::getInstance();
 
@@ -48,6 +48,6 @@
         }
 
         $resultado = true;
-    // }
+    }
     echo json_encode($resultado);
 ?>
